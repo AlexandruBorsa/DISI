@@ -1,6 +1,7 @@
 package com.disi.trainer.DataAccess;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Trainer {
@@ -10,6 +11,8 @@ public class Trainer {
     private String name;
     private String username;
     private String password;
+    @OneToMany(mappedBy = "trainerId")
+    private Set<Customer> customers;
 
     public Trainer() {
     }
