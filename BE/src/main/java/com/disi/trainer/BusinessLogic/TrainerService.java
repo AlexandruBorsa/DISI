@@ -5,9 +5,11 @@ import com.disi.trainer.DataAccess.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class TrainerService {
@@ -26,11 +28,21 @@ public class TrainerService {
 
     }
 
-    public Optional<Trainer> getTrainer(Long id){
+    public Optional<Trainer> getTrainer(Integer id){
         return trainerRepository.findById(id);
     }
 
     public void addTrainer(Trainer trainer) {
         trainerRepository.save(trainer);
     }
+
+
+
+
+    public Trainer getTrainerByUsernameAndPassword(String username, String password){
+        Trainer trainer = trainerRepository.findByUsernameAndPassword(username, password);
+        return trainer;
+    }
+
+
 }
