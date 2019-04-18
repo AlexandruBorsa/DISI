@@ -1,0 +1,11 @@
+:host, main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+main {
+  background-image: url("../assets/login-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
