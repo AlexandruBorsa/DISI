@@ -9,14 +9,16 @@ public class Trainer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
     private Long id;
-    private String name;
+    private String username;
     private String password;
+    private String name;
 
     public Trainer(){}
 
-    public Trainer(String name, String password) {
-        this.name = name;
+    public Trainer(String username, String password, String name) {
+        this.username = username;
         this.password = password;
+        this.name = name;
     }
 
     public Long getId() {
@@ -25,6 +27,14 @@ public class Trainer {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
