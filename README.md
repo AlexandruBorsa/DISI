@@ -1,2 +1,0 @@
-# DISI
-# DISI-Alex-backend
