@@ -19,13 +19,9 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
-    @RequestMapping
-    public Optional<Customer> getCustomer(@PathVariable String id){
-        return customerService.getCustomer(Integer.parseInt(id));
-    }
-    @RequestMapping
-    public Optional<Customer> getCustomerByName(String name){
-        return Optional.ofNullable(customerService.getCustomerByName(name));
+    @RequestMapping("/customer/{id}")
+    public Optional<Customer> getCustomerById(@PathVariable String id){
+        return customerService.getCustomerById(Integer.parseInt(id));
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/customers")
