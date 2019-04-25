@@ -33,7 +33,7 @@ public class TrainerController {
 
     @RequestMapping("/trainer/{id}")
     public Optional<Trainer> getTrainer(@PathVariable String id) {
-        return trainerService.getTrainer(Long.parseLong(id));
+        return trainerService.getTrainer(Integer.parseInt(id));
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/trainers")
