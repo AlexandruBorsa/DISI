@@ -29,9 +29,12 @@ public class CustomerService {
         customerRepository.save(customer);
     }
 
-    public Customer getCustomerByName(String name){
-        Customer customer = customerRepository.findCustomerByName(name);
-        return customer;
+    public void deleteCustomer(Integer id){
+        customerRepository.deleteById(id);
+    }
+
+    public void updateCustomer(Customer customer){
+        customerRepository.save(customer);
     }
 
 }
