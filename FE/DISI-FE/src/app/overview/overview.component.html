@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-list>
+    <div class="client-row" *ngFor="let customer of customers; let i = index">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input contenteditable="true" matInput placeholder="Name" [value]="customer.name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input contenteditable="true" matInput placeholder="Email" [value]="customer.email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input contenteditable="true" matInput placeholder="Phone" [value]="customer.phone">
+      </mat-form-field>
+      <span><mat-icon (click)="save(customer)">save</mat-icon>
+      <mat-icon (click)="remove(i)">delete</mat-icon></span>
+    </div>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Add customer
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="width: 100%; display: flex; justify-content: space-between;">
+          <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="newName">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Age" [(ngModel)]="newAge">
+          </mat-form-field>
+        </div>
+
+        <div style="width: 100%; display: flex; justify-content: space-between;">
+          <mat-form-field>
+            <input matInput placeholder="Phone No" [(ngModel)]="newPhone">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Email" [(ngModel)]="newEmail">
+          </mat-form-field>
+        </div>
+
+        <mat-icon style="cursor: pointer" (click)="addUser()">add_circle_outline</mat-icon>
+      </div>
+
+    </mat-expansion-panel>
+  </mat-list>
+</mat-card>
