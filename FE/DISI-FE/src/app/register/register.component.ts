@@ -4,14 +4,18 @@ import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
+  public name;
   public username;
   public password;
+  public confirmPassword;
+  private  profilePic = 'https://image.flaticon.com/icons/png/512/17/17797.png';
+
 
   constructor(
     private service: AppService, // services for BE calls
@@ -21,25 +25,24 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.name = '';
     this.username = ''; // init inputs - empty strings
     this.password = '';
+    this.confirmPassword = '';
   }
 
-  login() {
-    if (this.username === 'admin' && this.password === 'admin') {
-      this.openSnackBar('Login successful!', '');
-      this.router.navigate(['/overview']);
-    } else {
-      this.openSnackBar('Login failed!', '');
-    }
-    /*this.service.login(this.username, this.password) // login function inside service
+  register() {
+    //check if the username already exists
+    this.password === this.confirmPassword ?
+      this.openSnackBar('Register successful!', '') :
+      this.openSnackBar('Register failed!', '');
+    /*this.service.register(this.name, this.username, this.password) // register function inside service
       .subscribe(res => { // returns Observable 1.response  function(success, error)
-        this.openSnackBar('Login successful!', '');
-        this.router.navigate(['home']);
+        this.openSnackBar('Register successful!', '');
+        this.router.navigate(['overview']);
       }, err => {
-        this.openSnackBar('Wrong username or password', '');
+        this.openSnackBar('Wrong selected fields', '');
       });*/
-
   }
 
   openSnackBar(message: string, action: string) {

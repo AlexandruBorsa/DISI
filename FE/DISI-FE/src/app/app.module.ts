@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing.module';
 import {LoginComponent} from './login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {RegisterComponent} from './register/register.component';
 import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatDividerModule, MatExpansionModule,
   MatFormFieldModule,
@@ -22,7 +23,8 @@ import {OverviewComponent} from './overview/overview.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    OverviewComponent
+    OverviewComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

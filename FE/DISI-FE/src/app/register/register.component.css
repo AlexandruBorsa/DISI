@@ -5,9 +5,18 @@
 }
 
 .example-container {
-  width: 300px;
+  width: 500px;
+  height: 500px;
   padding: 1rem;
   margin: auto;
+}
+
+.example-container img{
+  display: flex;
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
 }
 
 mat-form-field {
