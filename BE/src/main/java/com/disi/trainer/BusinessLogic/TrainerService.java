@@ -25,22 +25,26 @@ public class TrainerService {
                 .forEach(trainers::add);
 
         return trainers;
-
     }
 
     public Optional<Trainer> getTrainer(Integer id){
-
         return trainerRepository.findById(id);
     }
 
     public void addTrainer(Trainer trainer) {
+        trainerRepository.save(trainer);
+    }
 
+    public void deleteTrainer(Integer id){
+        trainerRepository.deleteById(id);
+    }
+
+    public void updateTrainer(Trainer trainer){
         trainerRepository.save(trainer);
     }
 
     public Trainer getTrainerByUsernameAndPassword(String username, String password){
-        Trainer trainer = trainerRepository.findByUsernameAndPassword(username, password);
-        return trainer;
+        return trainerRepository.findByUsernameAndPassword(username, password);
     }
 
 

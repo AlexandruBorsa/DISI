@@ -30,8 +30,27 @@ public class TrainerController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/trainers")
-    public void addTrainer(@RequestBody Trainer trainer) {
+    public ResponseEntity<Trainer> addTrainer(@RequestBody Trainer trainer) {
+
         trainerService.addTrainer(trainer);
+
+        return new ResponseEntity<>(trainer, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/trainers/{id}")
+    public ResponseEntity<?> deleteTrainer(@PathVariable String id){
+
+        trainerService.deleteTrainer(Integer.parseInt(id));
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/trainers")
+    public ResponseEntity<Trainer> updateTrainer(@RequestBody Trainer trainer){
+
+        trainerService.updateTrainer(trainer);
+
+        return new ResponseEntity<>(trainer, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/login")

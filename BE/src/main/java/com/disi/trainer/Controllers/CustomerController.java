@@ -18,7 +18,6 @@ public class CustomerController {
 
     @RequestMapping("/customers")
     public List<Customer> getAllCustomers (){
-
         return customerService.getAllCustomers();
     }
 
