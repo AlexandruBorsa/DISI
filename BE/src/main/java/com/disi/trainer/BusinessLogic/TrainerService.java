@@ -29,15 +29,14 @@ public class TrainerService {
     }
 
     public Optional<Trainer> getTrainer(Integer id){
+
         return trainerRepository.findById(id);
     }
 
     public void addTrainer(Trainer trainer) {
+
         trainerRepository.save(trainer);
     }
-
-
-
 
     public Trainer getTrainerByUsernameAndPassword(String username, String password){
         Trainer trainer = trainerRepository.findByUsernameAndPassword(username, password);

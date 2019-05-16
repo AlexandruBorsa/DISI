@@ -4,17 +4,10 @@ package com.disi.trainer.Controllers;
 import com.disi.trainer.BusinessLogic.TrainerService;
 import com.disi.trainer.DataAccess.Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-import com.disi.trainer.BusinessLogic.TrainerService;
-import com.disi.trainer.DataAccess.Trainer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,11 +34,15 @@ public class TrainerController {
         trainerService.addTrainer(trainer);
     }
 
-    @PostMapping("/login")
-    public String getTrainer(String username, String password){
-        if(!trainerService.getTrainerByUsernameAndPassword(username, password).getUsername().isEmpty())
-            return "200";
-        else return "404";
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
+    public ResponseEntity<Trainer> getTrainerByUsername(@RequestParam String username, @RequestParam String password){
+        Trainer trainer = trainerService.getTrainerByUsernameAndPassword(username, password);
+
+        if(trainer==null) {
+            return new ResponseEntity<>(trainer, HttpStatus.FORBIDDEN);
+        } else {
+            return new ResponseEntity<>(trainer, HttpStatus.OK);
+        }
     }
 
 

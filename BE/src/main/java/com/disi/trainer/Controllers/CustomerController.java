@@ -3,6 +3,8 @@ package com.disi.trainer.Controllers;
 import com.disi.trainer.BusinessLogic.CustomerService;
 import com.disi.trainer.DataAccess.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +18,7 @@ public class CustomerController {
 
     @RequestMapping("/customers")
     public List<Customer> getAllCustomers (){
+
         return customerService.getAllCustomers();
     }
 
@@ -25,18 +28,27 @@ public class CustomerController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/customers")
-    public void addCustomer(@RequestBody Customer customer){
+    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){
+
         customerService.addCustomer(customer);
+
+        return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/customers/{id}")
-    public void deleteCustomer(@PathVariable String id){
+    public ResponseEntity<?> deleteCustomer(@PathVariable String id){
+
         customerService.deleteCustomer(Integer.parseInt(id));
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/customers")
-    public void updateCustomer(Customer customer){
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
+
         customerService.updateCustomer(customer);
+
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
 

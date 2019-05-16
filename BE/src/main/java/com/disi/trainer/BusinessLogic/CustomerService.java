@@ -22,18 +22,22 @@ public class CustomerService {
     }
 
     public Optional<Customer> getCustomerById (Integer id){
+
         return customerRepository.findById(id);
     }
 
     public void addCustomer(Customer customer){
+
         customerRepository.save(customer);
     }
 
     public void deleteCustomer(Integer id){
+
         customerRepository.deleteById(id);
     }
 
     public void updateCustomer(Customer customer){
+
         customerRepository.save(customer);
     }
 
