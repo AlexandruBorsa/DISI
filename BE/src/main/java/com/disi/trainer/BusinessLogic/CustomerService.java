@@ -15,10 +15,14 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public List<Customer> getAllCustomers() {
+    public List<Customer> findByTrainerId(Integer id) {
         List<Customer> customers = new ArrayList<>();
-        customerRepository.findAll().forEach(customers::add);
+        customerRepository.findByTrainerId(id).forEach(customers::add);
         return customers;
+    }
+
+    public Optional<Customer> findByIdAndTrainerId(Integer customerId, Integer trainerId) {
+        return customerRepository.findByIdAndTrainerId(customerId, trainerId);
     }
 
     public Optional<Customer> getCustomerById (Integer id){
@@ -29,8 +33,8 @@ public class CustomerService {
         customerRepository.save(customer);
     }
 
-    public void deleteCustomer(Integer id){
-        customerRepository.deleteById(id);
+    public void deleteCustomer(Customer customer){
+        customerRepository.delete(customer);
     }
 
     public void updateCustomer(Customer customer){

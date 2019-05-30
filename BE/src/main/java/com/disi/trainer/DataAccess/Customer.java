@@ -1,6 +1,10 @@
 package com.disi.trainer.DataAccess;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,19 +18,21 @@ public class Customer {
     private int age;
     private String phoneNo;
     private String mail;
-    private Integer trainerId;
-    @OneToMany(mappedBy = "customerId")
-    private Set<Entry> entries;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "trainerId", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Trainer trainer;
 
     public Customer() {
     }
 
-    public Customer(String name, int age, String phoneNo, String mail, Integer trainerId) {
+    public Customer(String name, int age, String phoneNo, String mail, Trainer trainer) {
         this.name = name;
         this.age = age;
         this.phoneNo = phoneNo;
         this.mail = mail;
-        this.trainerId = trainerId;
+        this.trainer = trainer;
     }
 
     public Integer getId() {
@@ -69,11 +75,11 @@ public class Customer {
         this.mail = mail;
     }
 
-    public Integer getTrainerId() {
-        return trainerId;
+    public Trainer getTrainer() {
+        return trainer;
     }
 
-    public void setTrainerId(Integer trainerId) {
-        this.trainerId = trainerId;
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
     }
 }

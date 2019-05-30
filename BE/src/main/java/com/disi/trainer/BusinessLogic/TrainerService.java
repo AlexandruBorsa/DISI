@@ -1,5 +1,6 @@
 package com.disi.trainer.BusinessLogic;
 
+import com.disi.trainer.DataAccess.Customer;
 import com.disi.trainer.DataAccess.Trainer;
 import com.disi.trainer.DataAccess.TrainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,10 @@ public class TrainerService {
 
     public Optional<Trainer> getTrainer(Integer id){
         return trainerRepository.findById(id);
+    }
+
+    public Boolean existsById(Integer id){
+        return trainerRepository.existsById(id);
     }
 
     public void addTrainer(Trainer trainer) {

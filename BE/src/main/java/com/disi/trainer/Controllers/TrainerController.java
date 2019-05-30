@@ -19,12 +19,12 @@ public class TrainerController {
     private TrainerService trainerService;
 
 
-    @RequestMapping("/trainers")
+    @RequestMapping(method = RequestMethod.GET, value = "/trainers")
     public List<Trainer> getAllTrainers() {
         return trainerService.getAllTrainers();
     }
 
-    @RequestMapping("/trainer/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/trainers/{id}")
     public Optional<Trainer> getTrainer(@PathVariable String id) {
         return trainerService.getTrainer(Integer.parseInt(id));
     }
@@ -58,7 +58,7 @@ public class TrainerController {
         Trainer trainer = trainerService.getTrainerByUsernameAndPassword(username, password);
 
         if(trainer==null) {
-            return new ResponseEntity<>(trainer, HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         } else {
             return new ResponseEntity<>(trainer, HttpStatus.OK);
         }
