@@ -2,10 +2,8 @@ package com.disi.trainer.Controllers;
 
 import com.disi.trainer.BusinessLogic.CustomerService;
 import com.disi.trainer.BusinessLogic.EntryService;
-import com.disi.trainer.BusinessLogic.TrainerService;
 import com.disi.trainer.DataAccess.Customer;
 import com.disi.trainer.DataAccess.Entry;
-import com.disi.trainer.DataAccess.Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

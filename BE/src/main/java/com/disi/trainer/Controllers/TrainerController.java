@@ -54,14 +54,14 @@ public class TrainerController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/login")
-    public ResponseEntity<Trainer> getTrainerByUsername(@RequestParam String username, @RequestParam String password){
-        Trainer trainer = trainerService.getTrainerByUsernameAndPassword(username, password);
+    public ResponseEntity<Trainer> getTrainerByUsername(@RequestBody Trainer trainer){
+        Trainer existsTrainer = trainerService.getTrainerByUsernameAndPassword(trainer.getUsername(), trainer.getPassword());
 
-        if(trainer==null) {
+        if(existsTrainer==null) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         } else {
-            trainer.setPassword("");
-            return new ResponseEntity<>(trainer, HttpStatus.OK);
+            existsTrainer.setPassword("");
+            return new ResponseEntity<>(existsTrainer, HttpStatus.OK);
         }
     }
 
