@@ -15,7 +15,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private int age;
+    private Integer age;
     private String phoneNo;
     private String mail;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

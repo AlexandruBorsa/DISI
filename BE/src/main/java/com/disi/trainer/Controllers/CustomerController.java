@@ -21,9 +21,14 @@ public class CustomerController {
     @Autowired
     private TrainerService trainerService;
 
+    @RequestMapping(method = RequestMethod.GET, value = "/customers")
+    public List<Customer> getAllCustomers (@PathVariable Integer id){
+        return customerService.getAllCustomers();
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/trainers/{id}/customers")
-    public List<Customer> getAllCustomersByTrainerId (@PathVariable String id){
-        return customerService.findByTrainerId(Integer.parseInt(id));
+    public List<Customer> getAllCustomersByTrainerId (@PathVariable Integer id){
+        return customerService.findByTrainerId(id);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/trainers/{trainerId}/customers/{customerId}")
@@ -48,7 +53,7 @@ public class CustomerController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/trainers/{trainerId}/customers/{customerId}")
     public ResponseEntity<?> deleteCustomer(@PathVariable Integer trainerId, @PathVariable Integer customerId){
 
-        Optional<Customer> customer = customerService.findByIdAndTrainerId(trainerId, customerId);
+        Optional<Customer> customer = customerService.findByIdAndTrainerId(customerId, trainerId);
 
         if(customer==null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

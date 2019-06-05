@@ -38,9 +38,9 @@ public class TrainerController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/trainers/{id}")
-    public ResponseEntity<?> deleteTrainer(@PathVariable String id){
+    public ResponseEntity<?> deleteTrainer(@PathVariable Integer id){
 
-        trainerService.deleteTrainer(Integer.parseInt(id));
+        trainerService.deleteTrainer(id);
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
@@ -60,6 +60,7 @@ public class TrainerController {
         if(trainer==null) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         } else {
+            trainer.setPassword("");
             return new ResponseEntity<>(trainer, HttpStatus.OK);
         }
     }

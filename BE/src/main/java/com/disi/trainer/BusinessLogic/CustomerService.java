@@ -15,6 +15,16 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    public List<Customer> getAllCustomers() {
+
+        List<Customer> customers = new ArrayList<>();
+
+        customerRepository.findAll()
+                .forEach(customers::add);
+
+        return customers;
+    }
+
     public List<Customer> findByTrainerId(Integer id) {
         List<Customer> customers = new ArrayList<>();
         customerRepository.findByTrainerId(id).forEach(customers::add);
@@ -39,6 +49,10 @@ public class CustomerService {
 
     public void updateCustomer(Customer customer){
         customerRepository.save(customer);
+    }
+
+    public Boolean existsById(Integer id){
+        return customerRepository.existsById(id);
     }
 
 }
