@@ -22,7 +22,7 @@ public class CustomerController {
     private TrainerService trainerService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/customers")
-    public List<Customer> getAllCustomers (@PathVariable Integer id){
+    public List<Customer> getAllCustomers (){
         return customerService.getAllCustomers();
     }
 
