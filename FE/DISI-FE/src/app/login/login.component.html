@@ -1,0 +1,15 @@
+<mat-card class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Username" [(ngModel)]="username">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Password" type="password" [(ngModel)]="password">
+  </mat-form-field>
+
+  <button mat-button (click)="login()">Login</button>
+
+  <div style="display: flex">
+    <span style="margin: auto;">Don't have an account? <a routerLink="/register">Sing Up</a></span>
+  </div>
+</mat-card>

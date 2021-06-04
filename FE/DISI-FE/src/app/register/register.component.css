@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.example-container {
+  width: 500px;
+  height: 500px;
+  padding: 1rem;
+  margin: auto;
+}
+
+.example-container img{
+  display: flex;
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+button {
+  display: flex;
+  margin: auto;
+}
+
+mat-card {
+  background-color: rgba(255, 255, 255, 0.85);
+}
